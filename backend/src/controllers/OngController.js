@@ -5,12 +5,12 @@ const crypto = require('crypto');
 const connection = require('../database/connection');
 
 module.exports = {
-    async index(resquest, response){
+    async index(request, response){
         const ongs = await  connection('ongs').select('*');
         return response.json(ongs);
     },
 
-    async create(resquest, response){
+    async create(request, response){
         const { name, email, whatsapp, city, uf } = request.body; // para pegar todos de uma vez usa uma variavel
 
     const id = crypto.randomBytes(4).toString('HEX');
